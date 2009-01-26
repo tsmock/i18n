@@ -13,7 +13,7 @@ my $comment = 0;
 
 # Print a header to write valid Java code.  No line break,
 # so that the input and output line numbers will match.
-print "class trans_surveyor { void tr(String s){} void f() {";
+print "class trans_validator { void tr(String s){} void f() {";
 
 while(my $line = <>)
 {
@@ -26,9 +26,9 @@ while(my $line = <>)
   {
     print "\n";
   }
-  elsif($line =~ /<button label=\"(.*?)\"/)
+  elsif($line =~ /(.*) *# *(.*) *$/)
   {
-    print "tr(\"$1\"); // $line\n";
+    print "tr(\"$2\"); // $1\n";
   }
   else
   {
